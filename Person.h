@@ -17,34 +17,47 @@ public:
         return firstName;
     }
 
-    void setFirstName(String firstName) {
-        this.firstName = firstName;
+    void setFirstName(string firstName) {
+        this -> firstName = firstName;
     }
 
     string getLastName() {
         return lastName;
     }
 
-    void setLastName(String lastName) {
-        this.lastName = lastName;
+    void setLastName(string lastName) {
+        this -> lastName = lastName;
     }
 
     string getState() {
         return state;
     }
 
-    void setState(String state) {
-        this.state = state;
+    void setState(string state) {
+        this -> state = state;
     }
 
     string getCity() {
         return city;
     }
 
-    void setCity(String city) {
-        this.city = city;
+    void setCity(string city) {
+        this -> city = city;
     }
 
     string getZip() {
         return zip;
     }
+
+    void setZip(string zip) {
+        this -> zip = zip;
+    }
+
+    string getPhoneNumber() {
+        return phoneNumber;
+    }
+    
+    void setPhoneNumber(string phoneNumber) {
+        this -> phoneNumber=phoneNumber;
+    }
+};
