@@ -1,44 +1,40 @@
 #include <iostream>
 #include <string>
 #include <list>
-#include "Person.h"
+#include "AddressBookOperation.h"
+#include <stdlib.h>
 
 using namespace std;
-list<Person> record;
+
 int main()
 {
-    Person p;
     cout << "**********Welcome To AddressBook***********" << endl;
-    cout << "Enter the first Name of person: " << endl;
-    string firstName;
-    getline (cin, firstName);
-    p.setFirstName(firstName);
-    cout << "Enter the last Name of the Person: " << endl;
-    string lastName;
-    getline (cin, lastName);
-    p.setLastName(lastName);
-    cout << "Enter the state of Person: " << endl;
-    string state;
-    getline (cin, state);
-    p.setState(state);
-    cout << "Enter the city of person: " << endl;
-    string city;
-    getline (cin, city);
-    p.setCity(city);
-    cout << "Enter the zipCode of person: " << endl;
-    string zip;
-    getline (cin, zip);
-    p.setZip(zip); 
-    cout << "Enter the phoneNumber: " << endl;
-    string phoneNumber;
-    getline (cin, phoneNumber);
-    p.setPhoneNumber(phoneNumber);
-    record.push_back(p);
 
-    cout << "view the record" << endl;
-    for(Person data : record) {
-        cout<< "FirstName = " << data.getFirstName() << ", " << "LastName = " << data.getLastName() << ", " << "City = "<< data.getCity() << ", " 
-        << "State = " << data.getState() << ", " << "Zip =" << data.getZip() << ", " << "PhoneNumber = " << data.getPhoneNumber() << endl; 
+    addressBook_Operation operation;
+   
+    int choice;
+    int repeat = 1;
+    while(repeat == 1) {
+      cout << "Enter The Choice  \n1. Add The Person \n2. View Records" << endl;
+      cin >> choice;
+      cin.ignore(1, '\n');
+      switch(choice) {
+        case 1:
+             operation.addPerson();
+             break;
+        case 2:
+             operation.viewRecords();
+             break;
+        default:
+            cout << "Invalid choice!" <<endl;
+            break;
+     }
+      cout << "To continue press 1\n and for exit press any number " << endl;
+      cin >> repeat;
+    }
+
+    if(repeat != 2){
+         cout << "Exit" << endl;
     }
 
      return 0;
