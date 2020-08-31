@@ -13,6 +13,19 @@ private:
     string phoneNumber;
 
 public:
+    Person()
+    {
+
+    }
+    
+    Person(string firstName, string lastName, string state, string city, string zip, string phoneNumber) {
+        this -> firstName = firstName;
+        this -> lastName = lastName;
+        this -> state = state;
+        this -> city = city;
+        this -> zip = zip;
+        this -> phoneNumber = phoneNumber;
+    }
     string getFirstName() {
         return firstName;
     }
@@ -58,6 +71,6 @@ public:
     }
     
     void setPhoneNumber(string phoneNumber) {
-        this -> phoneNumber=phoneNumber;
+        this -> phoneNumber = phoneNumber;
     }
 };
