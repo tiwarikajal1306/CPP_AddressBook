@@ -79,7 +79,8 @@ void display_Menu_Option()
           << "3. Edit Detail Of Person From Address Book.\n"
           << "4. Delete Detail Of Person From Address Book. \n"
           << "5. Sort The Person By Name. \n"
-          << "6. Sort The Person By Address"
+          << "6. Sort The Person By Address. \n"
+          << "7. View the Person In Address Book By City And State.\n"
           << endl;
 }
 
@@ -128,7 +129,8 @@ enum choice
      EDIT_PERSON_DETAIL,
      DELETE_PERSON,
      SORT_PERSON_NAME,
-     SORT_PERSON_ADDRESS
+     SORT_PERSON_ADDRESS,
+     SEARCH_CITY_AND_STATE
 };
 
 void sortDetailByAddress()
@@ -168,6 +170,19 @@ void sortDetailByAddress()
      }
 }
 
+void search_Person_By_City_And_State()
+{
+    cout << "Enter City Name: ";
+    string cityName;
+    getline(cin, cityName);
+
+    cout << "Enter State Name: ";
+    string stateName;
+    getline(cin, stateName);
+
+    o_AddressBook.searchPersonBYCityAndState(cityName, stateName);
+}
+
 void perform_Operation()
 {
      int menuChoice;
@@ -198,6 +213,9 @@ void perform_Operation()
                break;
           case choice ::SORT_PERSON_ADDRESS:
                sortDetailByAddress();
+               break;
+          case choice ::SEARCH_CITY_AND_STATE:
+               search_Person_By_City_And_State();
                break;
           default:
                cout << "Invalid Choice!...Please Enter Valid Choice. " << endl;
