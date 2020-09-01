@@ -21,6 +21,7 @@ public:
     void sortDetailByState();
     void sortDetailByZip();
     void searchPersonBYCityAndState(string city, string state);
+    void searchPersonBYCityOrState(string cityOrState);
 };
 
 void addressBook ::addPerson(Person &person)
@@ -209,6 +210,19 @@ void addressBook ::searchPersonBYCityAndState(string city, string state)
                  << "lastName: " << detail.getLastName() << " "
                  << "City: " << detail.getCity() << " "
                  << "State: " << detail.getState() << "Zip: " << detail.getZip() << " "
+                 << "Phone Number" << detail.getPhoneNumber() << endl;
+    }
+}
+
+void addressBook ::searchPersonBYCityOrState(string cityOrState)
+{
+    for (Person detail : person_Record)
+    {
+        if (detail.getCity() == cityOrState || detail.getState() == cityOrState)
+            cout << "firstName: " << detail.getFirstName() << " "
+                 << "lastName: " << detail.getLastName() << " "
+                 << "City: " << detail.getCity() << " "
+                 << "State: " << detail.getState() << " " << "Zip: " << detail.getZip() << " "
                  << "Phone Number" << detail.getPhoneNumber() << endl;
     }
 }
