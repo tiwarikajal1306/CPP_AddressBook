@@ -77,7 +77,8 @@ void display_Menu_Option()
      cout << "1. Add The Person In Address Book. \n"
           << "2. Display Person In Address Book. \n"
           << "3. Edit Detail Of Person From Address Book.\n"
-          << "4. Delete Detail Of Person From Address Book. " << endl;
+          << "4. Delete Detail Of Person From Address Book. \n" 
+          << "5. Sort The Person By Name. \n" << endl;
 }
 
 void display_Person_Detail()
@@ -123,7 +124,8 @@ enum choice
      ADD_NEW_PERSON,
      DISPLAY_PERSON,
      EDIT_PERSON_DETAIL,
-     DELETE_PERSON
+     DELETE_PERSON,
+     SORT_PERSON_NAME
 };
 
 void perform_Operation()
@@ -139,17 +141,20 @@ void perform_Operation()
 
           switch (menuChoice - 1)
           {
-          case choice ::ADD_NEW_PERSON:
+          case choice :: ADD_NEW_PERSON:
                addPersonToAddressBook();
                break;
-          case choice ::DISPLAY_PERSON:
+          case choice :: DISPLAY_PERSON:
                display_Person_Detail();
                break;
-          case choice ::EDIT_PERSON_DETAIL:
+          case choice :: EDIT_PERSON_DETAIL:
                editPersonDetail();
                break;
-          case choice ::DELETE_PERSON:
+          case choice :: DELETE_PERSON:
                deletePersonDetail();
+               break;
+          case choice :: SORT_PERSON_NAME:
+               o_AddressBook.sortDetailByName();
                break;
           default:
                cout << "Invalid Choice!...Please Enter Valid Choice. " << endl;

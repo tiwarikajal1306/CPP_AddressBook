@@ -15,6 +15,7 @@ class addressBook
         void deletePerson(string firstName, string lastName);
         void editPersonDetails(string firstName, string lastName, int option, string updatedDetail);
         bool checkDuplicatePerson(string firstName, string lastName);
+        void sortDetailByName();
 };
 
 void addressBook :: addPerson(Person &person)
@@ -95,4 +96,27 @@ bool addressBook :: checkDuplicatePerson(string firstName, string lastName)
         }
     }
     return true;
+}
+
+void addressBook :: sortDetailByName()
+{
+    Person temp;
+    for(int iteration= 0; iteration < person_Record.size(); iteration++)
+    {
+        int flag = 0;
+        for(int index = 0; index < person_Record.size() - 1 - iteration; index++)
+        {
+            if(person_Record[index].getFirstName() > person_Record[index + 1].getFirstName())
+            {
+                temp = person_Record[index];
+                person_Record[index] = person_Record[index + 1];
+                person_Record[index + 1] = temp;
+                flag = 1;
+            }
+        }
+        if(flag == 0)
+        {
+            break;
+        }
+    }
 }
