@@ -41,9 +41,10 @@ void addPersonToAddressBook()
 
      for (int i = 0; i < NumberOfPerson; i++)
      {
-          if(i > 0)
+          if (i > 0)
           {
-               cout << "Enter the next Person Detail \n" << endl;
+               cout << "Enter the next Person Detail \n"
+                    << endl;
           }
 
           cout << "Enter first Name Of Person" << endl;
@@ -53,7 +54,7 @@ void addPersonToAddressBook()
           string lastName;
           getline(cin, lastName);
           bool check_Duplicate = o_AddressBook.checkDuplicatePerson(firstName, lastName);
-          if(check_Duplicate)
+          if (check_Duplicate)
           {
                Person person = takeUserInput(firstName, lastName);
                o_AddressBook.addPerson(person);
@@ -62,7 +63,6 @@ void addPersonToAddressBook()
           {
                break;
           }
-          
      }
 }
 
@@ -77,8 +77,10 @@ void display_Menu_Option()
      cout << "1. Add The Person In Address Book. \n"
           << "2. Display Person In Address Book. \n"
           << "3. Edit Detail Of Person From Address Book.\n"
-          << "4. Delete Detail Of Person From Address Book. \n" 
-          << "5. Sort The Person By Name. \n" << endl;
+          << "4. Delete Detail Of Person From Address Book. \n"
+          << "5. Sort The Person By Name. \n"
+          << "6. Sort The Person By Address"
+          << endl;
 }
 
 void display_Person_Detail()
@@ -125,8 +127,46 @@ enum choice
      DISPLAY_PERSON,
      EDIT_PERSON_DETAIL,
      DELETE_PERSON,
-     SORT_PERSON_NAME
+     SORT_PERSON_NAME,
+     SORT_PERSON_ADDRESS
 };
+
+void sortDetailByAddress()
+{
+     cout << "Enter The Choice On The Basis Of Which You Want To Sort The Record.\n"
+          << endl;
+     cout << "1. Sort Address Book Record According To Person City.\n"
+          << "2. Sort Address Book Record According To Person State.\n"
+          << "3. Sort Address Book Record According To Person Zip.\n"
+          << endl;
+
+     int choice;
+     cin >> choice;
+     cin.ignore(1, '\n');
+
+     enum sort_choice
+     {
+          SORT_BY_CITY,
+          SORT_BY_STATE,
+          SORT_BY_ZIP
+     };
+
+     switch (choice - 1)
+     {
+     case sort_choice::SORT_BY_CITY:
+          o_AddressBook.sortDetailByCity();
+          break;
+     case sort_choice::SORT_BY_STATE:
+          o_AddressBook.sortDetailByState();
+          break;
+     case sort_choice::SORT_BY_ZIP:
+          o_AddressBook.sortDetailByZip();
+          break;
+     default:
+          cout << "Invalid Input, Try Again..." << endl;
+          break;
+     }
+}
 
 void perform_Operation()
 {
@@ -141,20 +181,23 @@ void perform_Operation()
 
           switch (menuChoice - 1)
           {
-          case choice :: ADD_NEW_PERSON:
+          case choice ::ADD_NEW_PERSON:
                addPersonToAddressBook();
                break;
-          case choice :: DISPLAY_PERSON:
+          case choice ::DISPLAY_PERSON:
                display_Person_Detail();
                break;
-          case choice :: EDIT_PERSON_DETAIL:
+          case choice ::EDIT_PERSON_DETAIL:
                editPersonDetail();
                break;
-          case choice :: DELETE_PERSON:
+          case choice ::DELETE_PERSON:
                deletePersonDetail();
                break;
-          case choice :: SORT_PERSON_NAME:
+          case choice ::SORT_PERSON_NAME:
                o_AddressBook.sortDetailByName();
+               break;
+          case choice ::SORT_PERSON_ADDRESS:
+               sortDetailByAddress();
                break;
           default:
                cout << "Invalid Choice!...Please Enter Valid Choice. " << endl;
