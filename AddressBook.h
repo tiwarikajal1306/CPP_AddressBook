@@ -13,6 +13,7 @@ class addressBook
         void viewPersonDetail();
         void setPersonDetail(Person &person);
         Person getPersonDetail();
+        void deletePerson(string firstName, string lastName);
         void editPersonDetails(string firstName, string lastName, int option, string updatedDetail);
 };
 
@@ -69,4 +70,13 @@ void addressBook :: editPersonDetails(string firstName, string lastName, int opt
                 cout << "Invalid Choice!...Please Enter Valid Choice" << endl;
         }
     }
+}
+
+void addressBook :: deletePerson(string firstName, string lastName)
+{
+    if(person.getFirstName() == firstName && person.getLastName() == lastName)
+    {
+        Person empty_Person_Detail;
+        addressBook :: setPersonDetail(empty_Person_Detail);
+    }   
 }

@@ -47,9 +47,10 @@ void show_Welcome_msg()
 void display_Menu_Option()
 {
      cout << "Enter Your Choice Which You Want To Perform..." << endl;
-     cout << "1. Add The Person In Address Book. \n"
-     << "2. Display Person In Address Book. \n" << 
-     "3. Edit Detail Of Person In Address Book." << endl;
+     cout << "1. Add The Person In Address Book. \n" <<
+     "2. Display Person In Address Book. \n" << 
+     "3. Edit Detail Of Person From Address Book.\n" << 
+     "4. Delete Detail Of Person From Address Book. " <<endl;
 }
 
 void display_Person_Detail()
@@ -78,11 +79,24 @@ void editPersonDetail()
      o_AddressBook.editPersonDetails(firstName, lastName, option, updatedDeatil);
 }
 
+void deletePersonDetail()
+{
+     cout << "Enter first Name Of Person" << endl;
+     string firstName;
+     getline (cin, firstName);
+     cout << "Enter Last Name Of Person" << endl;
+     string lastName;
+     getline (cin, lastName);
+     
+     o_AddressBook.deletePerson(firstName, lastName);
+}
+
 enum choice
 {
      ADD_NEW_PERSON,
      DISPLAY_PERSON,
-     EDIT_PERSON_DETAIL
+     EDIT_PERSON_DETAIL,
+     DELETE_PERSON
 };
 
 int main()
@@ -108,6 +122,9 @@ int main()
                     break;
                case choice :: EDIT_PERSON_DETAIL:
                     editPersonDetail();
+                    break;
+               case choice :: DELETE_PERSON:
+                    deletePersonDetail();
                     break;
                default:
                     cout << "Invalid Choice!...Please Enter Valid Choice. " <<endl;
