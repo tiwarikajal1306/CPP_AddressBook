@@ -1,43 +1,35 @@
 #include <iostream>
 #include <string>
 #include <list>
+#include <vector>
 #include "Person.h"
 
 using namespace std;
 
 class addressBook
 {
-    Person person;
+    vector<Person> person_Record;
     public:
         void addPerson(Person &person);
         void viewPersonDetail();
-        void setPersonDetail(Person &person);
-        Person getPersonDetail();
         void deletePerson(string firstName, string lastName);
         void editPersonDetails(string firstName, string lastName, int option, string updatedDetail);
 };
 
-void addressBook :: setPersonDetail(Person &person)
-{
-    this -> person = person;
-}
-
-Person addressBook :: getPersonDetail()
-{
-    return person;
-}
-
 void addressBook :: addPerson(Person &person)
 {
-    addressBook :: setPersonDetail(person);
+    person_Record.push_back(person);
 }
 
 void addressBook :: viewPersonDetail()
 {
     cout << "\n**********Person Details************\n" << endl;
-    cout<< "FirstName = " << person.getFirstName() << ", " << "LastName = " << person.getLastName() << ", " << "City = "<< person.getCity() << ", " 
-    << "State = " << person.getState() << ", " << "Zip =" << person.getZip() << ", " << "PhoneNumber = " << person.getPhoneNumber() << endl; 
 
+    for(Person showDetail : person_Record)
+    {
+    cout<< "FirstName = " << showDetail.getFirstName() << ", " << "LastName = " << showDetail.getLastName() << ", " << "City = "<< showDetail.getCity() << ", " 
+    << "State = " << showDetail.getState() << ", " << "Zip =" << showDetail.getZip() << ", " << "PhoneNumber = " << showDetail.getPhoneNumber() << endl; 
+    }
 }
 
 void addressBook :: editPersonDetails(string firstName, string lastName, int option, string updatedDetail)
@@ -50,33 +42,42 @@ void addressBook :: editPersonDetails(string firstName, string lastName, int opt
         EDIT_PHONE_NUMBER
     };
 
-    if(person.getFirstName() == firstName && person.getLastName() == lastName)
+    int index = 0;
+    for(Person person_Detail : person_Record)
     {
-        switch(option - 1)
+        if(person_Detail.getFirstName() == firstName && person_Detail.getLastName() == lastName)
         {
-            case editDetail :: EDIT_CITY:
-                person.setCity(updatedDetail);
-                break;
-            case editDetail :: EDIT_STATE:
-                person.setState(updatedDetail);
-                break;
-            case editDetail :: EDIT_ZIP:
-                person.setZip(updatedDetail);
-                break;
-            case editDetail :: EDIT_PHONE_NUMBER:
-                person.setPhoneNumber(updatedDetail);
-                break;
-            default:
-                cout << "Invalid Choice!...Please Enter Valid Choice" << endl;
+            switch(option - 1)
+            {
+                case editDetail :: EDIT_CITY:
+                    person_Record[index].setCity(updatedDetail);
+                    break;
+                case editDetail :: EDIT_STATE:
+                    person_Record[index].setState(updatedDetail);
+                    break;
+                case editDetail :: EDIT_ZIP:
+                    person_Record[index].setZip(updatedDetail);
+                    break;
+                case editDetail :: EDIT_PHONE_NUMBER:
+                    person_Record[index].setPhoneNumber(updatedDetail);
+                    break;
+                default:
+                    cout << "Invalid Choice!...Please Enter Valid Choice" << endl;
+            }
         }
+        index++;
     }
 }
 
 void addressBook :: deletePerson(string firstName, string lastName)
 {
-    if(person.getFirstName() == firstName && person.getLastName() == lastName)
+    int index = 0;
+    for(Person person_Detail : person_Record)
     {
-        Person empty_Person_Detail;
-        addressBook :: setPersonDetail(empty_Person_Detail);
+        if(person_Detail.getFirstName() == firstName && person_Detail.getLastName() == lastName)
+        {
+            person_Record.erase(person_Record.begin() + index);
+        }
+        index++;
     }   
 }
