@@ -14,6 +14,7 @@ class addressBook
         void viewPersonDetail();
         void deletePerson(string firstName, string lastName);
         void editPersonDetails(string firstName, string lastName, int option, string updatedDetail);
+        bool checkDuplicatePerson(string firstName, string lastName);
 };
 
 void addressBook :: addPerson(Person &person)
@@ -80,4 +81,18 @@ void addressBook :: deletePerson(string firstName, string lastName)
         }
         index++;
     }   
+}
+
+bool addressBook :: checkDuplicatePerson(string firstName, string lastName)
+{
+    int index = 0;
+    for(Person person_Detail : person_Record)
+    {
+        if(person_Record[index].getFirstName() == firstName && person_Record[index].getLastName() == lastName)
+        {
+            cout << "Duplicate Person Not Allowed..." << endl;
+            return false;
+        }
+    }
+    return true;
 }

@@ -8,16 +8,8 @@ using namespace std;
 
 addressBook o_AddressBook;
 
-Person takeUserInput()
+Person takeUserInput(string firstName, string lastName)
 {
-
-     cout << "Enter the first Name of person: " << endl;
-     string firstName;
-     getline(cin, firstName);
-
-     cout << "Enter the last Name of the Person: " << endl;
-     string lastName;
-     getline(cin, lastName);
 
      cout << "Enter the state of Person: " << endl;
      string state;
@@ -46,14 +38,31 @@ void addPersonToAddressBook()
      cout << "Enter How Many Person You Want To Add In Address Book" << endl;
      cin >> NumberOfPerson;
      cin.ignore(1, '\n');
+
      for (int i = 0; i < NumberOfPerson; i++)
      {
           if(i > 0)
           {
                cout << "Enter the next Person Detail \n" << endl;
           }
-          Person person = takeUserInput();
-          o_AddressBook.addPerson(person);
+
+          cout << "Enter first Name Of Person" << endl;
+          string firstName;
+          getline(cin, firstName);
+          cout << "Enter Last Name Of Person" << endl;
+          string lastName;
+          getline(cin, lastName);
+          bool check_Duplicate = o_AddressBook.checkDuplicatePerson(firstName, lastName);
+          if(check_Duplicate)
+          {
+               Person person = takeUserInput(firstName, lastName);
+               o_AddressBook.addPerson(person);
+          }
+          else
+          {
+               break;
+          }
+          
      }
 }
 
