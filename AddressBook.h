@@ -31,17 +31,19 @@ void addressBook ::addPerson(Person &person)
 
 void addressBook ::viewPersonDetail()
 {
-    cout << "\n**********Person Details************\n"
+    cout << "\n\t\t\t\t\t\t\t\t\t**********Person Details************\n"
          << endl;
 
     for (Person showDetail : person_Record)
     {
-        cout << "FirstName = " << showDetail.getFirstName() << ", "
-             << "LastName = " << showDetail.getLastName() << ", "
-             << "City = " << showDetail.getCity() << ", "
-             << "State = " << showDetail.getState() << ", "
-             << "Zip =" << showDetail.getZip() << ", "
-             << "PhoneNumber = " << showDetail.getPhoneNumber() << endl;
+        cout << "\t----------------------------------------\n"
+             << "\t\t\t"<< showDetail.getFirstName() << " " << showDetail.getLastName() << "\t\n"
+             << "\t----------------------------------------\n"
+             << "\tCity Name ---> " << showDetail.getCity() << "\t\t\t\n"
+             << "\tState Name ---> " << showDetail.getState() << "\t\t\t\n"
+             << "\tZip Number ---> " << showDetail.getZip() << "\t\t\t\n"
+             << "\tPhone Number ---> " << showDetail.getPhoneNumber() << "\t\t\t\n"
+             << "\t----------------------------------------\n";
     }
 }
 
@@ -105,6 +107,7 @@ bool addressBook ::checkDuplicatePerson(string firstName, string lastName)
             cout << "Duplicate Person Not Allowed..." << endl;
             return false;
         }
+        index++;
     }
     return true;
 }
@@ -203,26 +206,31 @@ void addressBook ::sortDetailByZip()
 
 void addressBook ::searchPersonBYCityAndState(string city, string state)
 {
-    for (Person detail : person_Record)
+    for (Person showDetail : person_Record)
     {
-        if (detail.getCity() == city && detail.getState() == state)
-            cout << "firstName: " << detail.getFirstName() << " "
-                 << "lastName: " << detail.getLastName() << " "
-                 << "City: " << detail.getCity() << " "
-                 << "State: " << detail.getState() << "Zip: " << detail.getZip() << " "
-                 << "Phone Number" << detail.getPhoneNumber() << endl;
-    }
+        if (showDetail.getCity() == city && showDetail.getState() == state)
+           cout << "\t----------------------------------------\n"
+             << "\t\t\t"<< showDetail.getFirstName() << " " << showDetail.getLastName() << "\t\n"
+             << "\t----------------------------------------\n"
+             << "\tCity Name ---> " << showDetail.getCity() << "\t\t\t\n"
+             << "\tState Name ---> " << showDetail.getState() << "\t\t\t\n"
+             << "\tZip Number ---> " << showDetail.getZip() << "\t\t\t\n"
+             << "\tPhone Number ---> " << showDetail.getPhoneNumber() << "\t\t\t\n"
+             << "\t----------------------------------------\n";    }
 }
 
 void addressBook ::searchPersonBYCityOrState(string cityOrState)
 {
-    for (Person detail : person_Record)
+    for (Person showDetail : person_Record)
     {
-        if (detail.getCity() == cityOrState || detail.getState() == cityOrState)
-            cout << "firstName: " << detail.getFirstName() << " "
-                 << "lastName: " << detail.getLastName() << " "
-                 << "City: " << detail.getCity() << " "
-                 << "State: " << detail.getState() << " " << "Zip: " << detail.getZip() << " "
-                 << "Phone Number" << detail.getPhoneNumber() << endl;
+        if (showDetail.getCity() == cityOrState || showDetail.getState() == cityOrState)
+           cout << "\t----------------------------------------\n"
+             << "\t\t\t"<< showDetail.getFirstName() << " " << showDetail.getLastName() << "\t\n"
+             << "\t----------------------------------------\n"
+             << "\tCity Name ---> " << showDetail.getCity() << "\t\t\t\n"
+             << "\tState Name ---> " << showDetail.getState() << "\t\t\t\n"
+             << "\tZip Number ---> " << showDetail.getZip() << "\t\t\t\n"
+             << "\tPhone Number ---> " << showDetail.getPhoneNumber() << "\t\t\t\n"
+             << "\t----------------------------------------\n";
     }
 }

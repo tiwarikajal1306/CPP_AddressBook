@@ -10,32 +10,35 @@ addressBook o_AddressBook;
 
 Person takeUserInput(string firstName, string lastName)
 {
+     Person person(firstName, lastName);
 
-     cout << "Enter the state of Person: " << endl;
+     cout << "---> State Name   :\t";
      string state;
      getline(cin, state);
+     person.setState(state);
 
-     cout << "Enter the city of person: " << endl;
+     cout << "---> City Name    :\t";
      string city;
      getline(cin, city);
+     person.setCity(city);
 
-     cout << "Enter the zipCode of person: " << endl;
+     cout << "---> Zip Number   :\t";
      string zip;
      getline(cin, zip);
+     person.setZip(zip);
 
-     cout << "Enter the phoneNumber: " << endl;
+     cout << "---> Phone Number :\t";
      string phoneNumber;
      getline(cin, phoneNumber);
-
-     Person person(firstName, lastName, state, city, zip, phoneNumber);
-
+     person.setPhoneNumber(phoneNumber);
+     
      return person;
 }
 
 void addPersonToAddressBook()
 {
      int NumberOfPerson;
-     cout << "Enter How Many Person You Want To Add In Address Book" << endl;
+     cout << "---> Enter Number Of Person You Want To Add\n" << endl;
      cin >> NumberOfPerson;
      cin.ignore(1, '\n');
 
@@ -43,14 +46,14 @@ void addPersonToAddressBook()
      {
           if (i > 0)
           {
-               cout << "Enter the next Person Detail \n"
+               cout << "\n---> Next Entry...\n"
                     << endl;
           }
 
-          cout << "Enter first Name Of Person" << endl;
+          cout << "---> First Name   :\t";
           string firstName;
           getline(cin, firstName);
-          cout << "Enter Last Name Of Person" << endl;
+          cout << "---> Last Name    :\t";
           string lastName;
           getline(cin, lastName);
           bool check_Duplicate = o_AddressBook.checkDuplicatePerson(firstName, lastName);
@@ -68,20 +71,30 @@ void addPersonToAddressBook()
 
 void show_Welcome_msg()
 {
-     cout << "\n************Welcome To Address Book************\n " << endl;
+     cout << "\n\t\t\t\t\t\t\t\t************Welcome To Address Book************ " << endl;
+     cout << "\t\t\t\t\t\t\t===============================================================" << endl; 
 }
 
 void display_Menu_Option()
 {
-     cout << "Enter Your Choice Which You Want To Perform..." << endl;
-     cout << "1. Add The Person In Address Book. \n"
-          << "2. Display Person In Address Book. \n"
-          << "3. Edit Detail Of Person From Address Book.\n"
-          << "4. Delete Detail Of Person From Address Book. \n"
-          << "5. Sort The Person By Name. \n"
-          << "6. Sort The Person By Address. \n"
-          << "7. View the Person In Address Book By City And State.\n"
-          << "8. Search the Person In Address Book By City Or State.\n"
+     cout << "\t\t\t\t\t\t\t*********Enter Your Choice Which You Want To Perform***********\n" << endl;
+     cout << "\t\t\t\t\t\t\t|1| Add New Person\t\t \n"
+          << "\t\t\t\t\t\t\t--------------------------------------------------------------\n"
+          << "\t\t\t\t\t\t\t|2| Display Person Details\t\t \n"
+          << "\t\t\t\t\t\t\t--------------------------------------------------------------\n"
+          << "\t\t\t\t\t\t\t|3| Edit Person Details\t\t \n"
+          << "\t\t\t\t\t\t\t--------------------------------------------------------------\n"
+          << "\t\t\t\t\t\t\t|4| Delete Person \t\t \n"
+          << "\t\t\t\t\t\t\t--------------------------------------------------------------\n"
+          << "\t\t\t\t\t\t\t|5| Sort Person(s) By Name \t\t \n"
+          << "\t\t\t\t\t\t\t--------------------------------------------------------------\n"
+          << "\t\t\t\t\t\t\t|6| Sort Person(s) By Address Details \t\t \n"
+          << "\t\t\t\t\t\t\t--------------------------------------------------------------\n"
+          << "\t\t\t\t\t\t\t|7| Search Person(s) By City And State \t\t \n"
+          << "\t\t\t\t\t\t\t--------------------------------------------------------------\n"
+          << "\t\t\t\t\t\t\t|8| Search Person(s) By City Or State \t\t \n"
+          << "----------------------------------------------------------------------------------------------"
+          << "----------------------------------------------------------------------------------------------------"
           << endl;
 }
 
@@ -92,19 +105,21 @@ void display_Person_Detail()
 
 void editPersonDetail()
 {
-     cout << "\n1. Edit City\n2. Edit State\n3. Edit Zip\n4. Edit PhoneNumber" << endl;
-     cout << "Enter The Choice Which You Want To Edit" << endl;
+     cout << "\n-----------------------------------------------------------------\n"
+          << "|1| Edit City\n|2| Edit State\n|3| Edit Zip\n|4| Edit PhoneNumber\n"
+          << "-----------------------------------------------------------------\n" << endl;
+     cout << "---> Enter The Choice Which You Want To Edit" << endl;
 
      int option;
      cin >> option;
      cin.ignore(1, '\n');
-     cout << "Enter first Name Of Person" << endl;
+     cout << "---> First Name   :\t";
      string firstName;
      getline(cin, firstName);
-     cout << "Enter Last Name Of Person" << endl;
+     cout << "---> Last Name    :\t";
      string lastName;
      getline(cin, lastName);
-     cout << "Enter new Detail " << endl;
+     cout << "\n--> Enter new Detail  :\t" << endl;
      string updatedDeatil;
      getline(cin, updatedDeatil);
 
@@ -113,10 +128,10 @@ void editPersonDetail()
 
 void deletePersonDetail()
 {
-     cout << "Enter first Name Of Person" << endl;
+     cout << "---> First Name   :\t";
      string firstName;
      getline(cin, firstName);
-     cout << "Enter Last Name Of Person" << endl;
+     cout << "---> Last Name    :\t";
      string lastName;
      getline(cin, lastName);
 
@@ -137,11 +152,13 @@ enum choice
 
 void sortDetailByAddress()
 {
-     cout << "Enter The Choice On The Basis Of Which You Want To Sort The Record.\n"
-          << endl;
-     cout << "1. Sort Address Book Record According To Person City.\n"
-          << "2. Sort Address Book Record According To Person State.\n"
-          << "3. Sort Address Book Record According To Person Zip.\n"
+     cout << "\n\t\t\t\t\t--->Enter The Choice On The Basis Of Which You Want To Sort The Record.\n"
+          << "\t\t\t\t\t\t\t--------------------------------------------------------------\n"
+          << "\t\t\t\t\t\t\t|1| Sort Address Book Record According To Person City.\n"
+          << "\t\t\t\t\t\t\t--------------------------------------------------------------\n"
+          << "\t\t\t\t\t\t\t|2| Sort Address Book Record According To Person State.\n"
+          << "\t\t\t\t\t\t\t--------------------------------------------------------------\n"
+          << "\t\t\t\t\t\t\t|3| Sort Address Book Record According To Person Zip.\n"
           << endl;
 
      int choice;
@@ -174,11 +191,11 @@ void sortDetailByAddress()
 
 void search_Person_By_City_And_State()
 {
-     cout << "Enter City Name: ";
+     cout << "---> City Name   :\t";
      string cityName;
      getline(cin, cityName);
 
-     cout << "Enter State Name: ";
+     cout << "---> State Name   :\t";
      string stateName;
      getline(cin, stateName);
 
@@ -187,7 +204,7 @@ void search_Person_By_City_And_State()
 
 void search_Person_By_City_Or_State()
 {
-    cout << "Enter City Or State Name: ";
+    cout << "---> City Or State Name   :\t";
     string city_Or_State_Name;
     getline(cin, city_Or_State_Name);
 

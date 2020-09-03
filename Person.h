@@ -18,7 +18,7 @@ public:
 
     }
     
-    Person(string firstName, string lastName, string state, string city, string zip, string phoneNumber) {
+    Person(string firstName, string lastName) {
         this -> firstName = firstName;
         this -> lastName = lastName;
         this -> state = state;
